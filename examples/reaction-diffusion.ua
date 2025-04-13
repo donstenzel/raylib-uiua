@@ -15,7 +15,7 @@ R ~ "../lib"
 # A & B are the densities of the chemicals.
 # A' ← A + Δt * (D₀▽²(A) - AB² + f(1 - A))
 # B' ← B + Δt * (D₁▽²(B) + AB² - (k + f)B)
-#
+# 
 # ▽² is like a weighted neighbor sum.
 
 D₀ ← 1
@@ -38,8 +38,6 @@ B ← +⟜(×Δt ++⊃(×D₁ WNS|×ⁿ₂|¯×+K F))
 
 F ← ⍜°⊟(⊃A˜B)
 
-Size ← 20
-
 # Square starting state
 Chemicals ← [
   ...[0_1 0_1 0_1 0_1 0_1 0_1 0_1 0_1 0_1 0_1 0_1]
@@ -47,11 +45,9 @@ Chemicals ← [
   ...[0_1 0_1 0_1 0_1 0_1 0_1 0_1 0_1 0_1 0_1 0_1]
 ]
 
-"Reaction Diffusion"
-W ×Size ↙₂△Chemicals
+▽⟜≡▽20 Chemicals
+W ⊃(⊢₂⊓△"Reaction Diffusion")°⍉
 °W~FPS 60
 Kb~Exit @q
-
-°⍉ ▽⟜≡▽Size Chemicals
 
 ◌ W~Loop!(R~ShowArray ⊃(⍉⊂⊙0)F)
