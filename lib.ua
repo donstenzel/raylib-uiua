@@ -9,9 +9,9 @@
     | ⍩⍤"Unsupported architecture." ⋅0 °{"windows" ∘}
     | ".dylib" °{"macos" "aarch64"}
     | ".so"
-    ) {Os Arch}
+    ) {os arch}
     {"." ThisFileDir ∘}
-    /($"___" ⊙Sep)
+    /($"___" ⊙pathsep)
   )
 
   Version ← "5.5"
